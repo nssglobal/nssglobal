@@ -143,7 +143,7 @@ class PlanningSlotService(models.Model):
         res= super(PlanningSlotService, self).create(vals_list)
         if res.partner_id and res.sub_service_ids:
             so=res.createSO(res.id)
-            res.actionEmailtoResource()
+            self.actionEmailtoResource()
         return res
     
     
