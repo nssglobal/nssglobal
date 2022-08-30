@@ -154,22 +154,17 @@ class PlanningSlotService(models.Model):
     def actionEmailtoResource(self):
         if self.resource_id:
             if self.resource_id.email:
-                mail_content = "  Hello  *" + self.resource_id.name + "* ,<br>Address :" + str(self.partner_id.street) + "," + \
-                                   str(self.partner_id.street2) + "<br>" +str(self.partner_id.city)+", "+self.partner_id.country_id.name if self.partner_id.country_id else ''+"<br> <br> Phone:"+\
+               mail_content = "  Hello  *" + self.resource_id.name + "* ,<br>Address :" + str(self.partner_id.street) + "," + \
+                                   str(self.partner_id.street2) + "<br>" +str(self.partner_id.city)+", "+str(self.partner_id.country_id.name) if self.partner_id.country_id else ''+"<br> <br> Phone:"+\
                                 str(self.partner_id.phone) +"<br>Mobile :" +str(self.partner_id.mobile)+"<br>Email :" +str(self.partner_id.email)
-                if self.sale_order_id:                
-                    if self.sale_order_id.state in ('draft' , 'sent'):
-                        mail_content +=  '<br>Your Quotation *'+self.sale_order_id.name +'* with amount ' + str(self.sale_order_id.amount_total)+self.sale_order_id.currency_id.symbol +'* is ready.'
-                        mail_content += '<div>  Your quotation date is ' + self.sale_order_id.date_order.strftime("%d-%m-%Y") +"</div>"
-                    else:
-                        mail_content +=  '<br>Sale Order Number *'+self.sale_order_id.name +'* with amount' + str(self.sale_order_id.amount_total)+self.sale_order_id.currency_id.symbol +'* is confirmed.'
-                        mail_content += '<div>  Your quotation date and time is' + self.sale_order_id.date_order.strftime("%d-%m-%Y") +"</div>"    
-                    if self.sale_order_id.order_line:
-                        mail_content += '<div> Quotation details are as follows: <br>'
-                        for li in self.sale_order_id.order_line:
-                            mail_content += '*Product :' + li.product_id.name +'* <br>'
-                            mail_content += '*Qty :' + str(li.product_uom_qty) +'* <br>'
-                            mail_content += '*Price :' + str(li.price_subtotal) +'* <br> </div>'
+                if self.sale_order_id:
+                    mail_content +=  '<br>Sale Order Number *'+str(self.sale_order_id.name) +'* with amount' + str(self.sale_order_id.amount_total)+str(self.sale_order_id.currency_id.symbol) +'* is confirmed.'
+                    mail_content += '<div>  Your quotation date and time is' + str(self.sale_order_id.date_order.strftime("%d-%m-%Y")) +"</div>"
+                    mail_content += '<div> Quotation details are as follows: <br>'
+                    for li in self.sale_order_id.order_line:
+                        mail_content += '*Product :' + li.product_id.name +'* <br>'
+                        mail_content += '*Qty :' + str(li.product_uom_qty) +'* <br>'
+                        mail_content += '*Price :' + str(li.price_subtotal) +'* <br> </div>'
                     mail_content += '<div> If you have any questions, please feel free to contact us.</div>'                
                 email_values = {
                     'body_html': mail_content,
