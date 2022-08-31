@@ -155,7 +155,7 @@ class PlanningSlotService(models.Model):
         if self.resource_id.email and self.sale_order_id:
             mail_content = "  Hello  *" + self.resource_id.name + "* ,<br>Address :" + str(self.partner_id.street) + "," + \
                                    str(self.partner_id.street2) + "<br>" +str(self.partner_id.city)+", "+str(self.partner_id.country_id.name)+"<br> <br> Phone:"+\
-                                str(self.partner_id.phone) +"<br>Mobile :" +str(self.partner_id.mobile)+"<br>Email :" +str(self.partner_id.email)
+                                str(self.partner_id.phone) +"<br>Mobile :" +str(self.partner_id.mobile)+"<br>Email :" +str(self.partner_id.email)+"<br>Location :" +str(self.name) if self.name else ""
             mail_content +=  '<br>Sale Order Number *'+str(self.sale_order_id.name) +'* with amount' + str(self.sale_order_id.amount_total)+str(self.sale_order_id.currency_id.symbol) +'* is confirmed.'
             mail_content += '<div>  Your quotation date and time is' + str(self.sale_order_id.date_order.strftime("%d-%m-%Y")) +"</div>"
             mail_content += '<div> Quotation details are as follows: <br>'
