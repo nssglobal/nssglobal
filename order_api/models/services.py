@@ -262,7 +262,7 @@ class SO_InvPayment(models.Model):
         
     def createPaymentfromSo(self):
        
-        bank_journal = self.env['account.journal'].search([('name', '=','Bank'),('company_id','=',self.company_id.id)],limit=1)
+        bank_journal = self.env['account.journal'].search([('type', '=','bank'),('company_id','=',self.company_id.id)],limit=1)
         vals = {
             'journal_id': bank_journal.id,
             'partner_id': self.partner_id.id,
