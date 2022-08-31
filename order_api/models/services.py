@@ -252,7 +252,7 @@ class SaleOrderAutomation(models.Model):
         if self.payment_status == 'paid':
             inv =self._create_invoices(final = True)
             inv.action_post() 
-            inv_payment_posted = inv.createPaymentfromSo()
+#             inv_payment_posted = inv.createPaymentfromSo()
             inv.payment_state ='paid'
         
         return res    
@@ -263,7 +263,7 @@ class SO_InvPayment(models.Model):
     def createPaymentfromSo(self):
        
         bank_journal = self.env['account.journal'].search([('type', '=','cash'),('company_id','=',self.company_id.id)],limit=1)
-        receivable_account = self.company_data['default_account_receivable']
+
         vals = {
             'journal_id': bank_journal.id,
             'partner_id': self.partner_id.id,
@@ -275,7 +275,7 @@ class SO_InvPayment(models.Model):
             'user_id': self.user_id.id,
             'partner_type': 'customer',
             'state': 'draft',
-            'destination_account_id': receivable_account.id,
+      
         }
         payment = self.env['account.payment'].create(vals)
         payment.action_post()  
