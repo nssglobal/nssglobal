@@ -18,7 +18,7 @@ from odoo.http import request
 from odoo.osv.expression import AND
 import base64
 from odoo.exceptions import ValidationError, AccessError
-
+from dateutil.relativedelta import relativedelta
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
@@ -36,6 +36,11 @@ class SaleOrderinh(models.Model):
     myfatoorah_bol = fields.Boolean( string='Link Sent',copy=False)
     formula = fields.Char( string='Formula',copy=False)
 
+    @api.model_create_multi
+    def create(self, vals_list):
+        res = super(SaleOrderinh, self).create(vals_list)
+        res.create_fatoorah_link()
+        return res
 
     def create_fatoorah_link(self):
         try:
@@ -58,7 +63,7 @@ class SaleOrderinh(models.Model):
 
             response = requests.request("POST", url, headers=headers, data=payload)
             fatoraLink=response.json()
-       
+            self.note = fatoraLink
             if fatoraLink["IsSuccess"]!=False:
                 self.myfatoorah_link=fatoraLink["Data"]["InvoiceURL"]
                 self.myfatoorah_invoice_id=fatoraLink["Data"]["InvoiceId"]
@@ -137,3 +142,12 @@ class twilio_sms_config(models.Model):
     account_sid = fields.Char('Account SID')
     auth_token = fields.Char('Auth Token')
     number_from = fields.Char('Number From')
+
+class AMInh(models.Model):
+    _inherit = 'account.move'
+
+    imp_id=fields.Char("Import ID")
+
+    _sql_constraints = [
+        ('imp_id_uniq', 'unique (imp_id)', "ID Already exist"),
+    ]

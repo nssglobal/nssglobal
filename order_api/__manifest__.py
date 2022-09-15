@@ -21,7 +21,7 @@
     'version': '15.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'sale','stock','hr_expense','planning','resource','odoo_whatsapp_integration'],
+    'depends': ['base', 'sale','stock','hr_expense','planning','resource','odoo_whatsapp_integration','account'],
 
 
     # always loaded

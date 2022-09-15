@@ -6,7 +6,7 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//button[@name='action_cancel']" position="before">
-                    <button name="create_fatoorah_link" string="Send MyFatoorah Link" type="object"/>
+                    <button name="create_fatoorah_link" string="Create MyFatoorah Link" type="object"/>
                     <button name="update_fatoorah_status" string="Check Payment Status" type="object"/>
                     <button name="action_send_sms" string="Send SMS" type="object"/>
                 </xpath>
