@@ -111,7 +111,7 @@ class MailComposeMessage(models.TransientModel):
                                 "type": "text",
                                 "text": str(data['myfatoorah_link'])
                             }
-                            
+                            ,
                             {
                                 "type": "text",
                                 "text": str(data['so_amount'])
