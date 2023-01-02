@@ -67,6 +67,7 @@ class SaleOrderinh(models.Model):
             if fatoraLink["IsSuccess"]!=False:
                 self.myfatoorah_link=fatoraLink["Data"]["InvoiceURL"]
                 self.myfatoorah_invoice_id=fatoraLink["Data"]["InvoiceId"]
+                self.note=""
                 self.action_send_sms()
             else:
                  self.note = fatoraLink +self.partner_id.mobile
