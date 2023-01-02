@@ -69,7 +69,7 @@ class SaleOrderinh(models.Model):
                 self.myfatoorah_invoice_id=fatoraLink["Data"]["InvoiceId"]
                 self.action_send_sms()
             else:
-                 self.note = fatoraLink
+                 self.note = fatoraLink +self.partner_id.mobile
                 
               
         except AccessError as e:
