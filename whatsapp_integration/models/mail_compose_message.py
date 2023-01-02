@@ -44,6 +44,7 @@ class MailComposeMessage(models.TransientModel):
             odooSO = self.env['sale.order'].browse(self.env.context['active_id']).exists()
             odooPayload['so_name'] = odooSO.name
             odooPayload['myfatoorah_link'] = odooSO.myfatoorah_link
+            odooPayload['so_amount'] = odooSO.amount_total
         if model == 'purchase.order':
             odooPayload['media'] = self.upload_media()
             odooPayload['name'] = self.partner_ids[0].name
@@ -96,7 +97,7 @@ class MailComposeMessage(models.TransientModel):
                     "policy": "deterministic",
                     "code": "en"
                 },
-                "name": "fatoorahtemplate",
+                "name": "sales_order_template",
                 "components": [
                     {
                         "type": "body",
@@ -109,6 +110,11 @@ class MailComposeMessage(models.TransientModel):
                             {
                                 "type": "text",
                                 "text": str(data['myfatoorah_link'])
+                            }
+                            
+                            {
+                                "type": "text",
+                                "text": str(data['so_amount'])
                             }
                         ]
                     },
