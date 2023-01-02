@@ -96,7 +96,7 @@ class MailComposeMessage(models.TransientModel):
                     "policy": "deterministic",
                     "code": "en"
                 },
-                "name": "fatoorah_template",
+                "name": "fatoorahtemplate",
                 "components": [
                     {
                         "type": "body",
