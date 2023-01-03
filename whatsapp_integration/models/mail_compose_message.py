@@ -97,7 +97,7 @@ class MailComposeMessage(models.TransientModel):
                     "policy": "deterministic",
                     "code": "en"
                 },
-                "name": "sales_order_template",
+                "name": "fatoorahtemplate",
                 "components": [
                     {
                         "type": "body",
@@ -110,11 +110,6 @@ class MailComposeMessage(models.TransientModel):
                             {
                                 "type": "text",
                                 "text": str(data['myfatoorah_link'])
-                            },
-                            
-                            {
-                                "type": "text",
-                                "text": str(data['so_amount'])
                             }
                         ]
                     },
