@@ -70,7 +70,7 @@ class SaleOrderinh(models.Model):
                 self.note=""
                 self.action_send_sms()
             else:
-                 self.note = fatoraLink +self.partner_id.mobile
+                 self.note = fatoraLink
                 
               
         except AccessError as e:
