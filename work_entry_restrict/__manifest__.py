@@ -19,7 +19,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'hr_work_entry_contract'],
+    'depends': ['base', 'hr_work_entry_contract','hr_payroll'],
 
     # always loaded
     'data': [
