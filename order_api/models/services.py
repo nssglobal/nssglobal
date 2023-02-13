@@ -50,6 +50,7 @@ class PlanningSlotService(models.Model):
     _inherit = 'planning.slot'
     
     partner_id = fields.Many2one('res.partner' ,string="Customer")
+    driver_id = fields.Many2one('hr.employee' ,string="Driver")
     service_id = fields.Many2one('service.note' ,string="Service")
     sub_service_id =fields.Many2one('service.line' ,string="Sub service")
     sub_service_ids =fields.Many2many('service.line' ,string="Sub service")
