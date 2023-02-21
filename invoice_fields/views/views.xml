@@ -1,6 +1,31 @@
 <odoo>
   <data>
 
+    <record id="view_account_invoice_report_driver_search_inherit" model="ir.ui.view">
+      <field name="name">account.invoice.report.search.inherit</field>
+      <field name="model">account.invoice.report</field>
+      <field name="inherit_id" ref="account.view_account_invoice_report_search"/>
+      <field name="arch" type="xml">
+        <!--                <xpath expr="//group/filter[@name='user']" position="after">-->
+        <!--                    <filter string="Sales Team" name="sales_channel" domain="[]" context="{'group_by':'team_id'}"/>-->
+        <!--                </xpath>-->
+        <xpath expr="//field[@name='invoice_user_id']" position="after">
+          <field name="driver_id" string="Driver"/>
+        </xpath>
+      </field>
+    </record>
+
+    <record id="view_order_product_pivot_inherit" model="ir.ui.view">
+      <field name="name">sale.report.pivot.inherit</field>
+      <field name="model">sale.report</field>
+      <field name="inherit_id" ref="sale.view_order_product_pivot"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='team_id']" position="after">
+          <field name="driver_id" type="row"/>
+        </xpath>
+      </field>
+    </record>
+
     <record id="sale_order_form_inh" model="ir.ui.view">
       <field name="name">sale.order.form.view</field>
       <field name="model">sale.order</field>
@@ -8,8 +33,8 @@
       <field name="arch" type="xml">
 
         <xpath expr="//field[@name='order_line']/tree/field[@name='name']" position="after">
-           <field name="analytic_account_id" optional="hide"/>
-           <field name="driver_id" optional="hide" domain="[('is_driver', '=', True)]"/>
+          <field name="analytic_account_id" optional="hide"/>
+          <field name="driver_id" optional="hide" domain="[('is_driver', '=', True)]"/>
         </xpath>
 
       </field>

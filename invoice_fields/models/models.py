@@ -23,7 +23,31 @@ class SaleOrderLineInh(models.Model):
         })
         return res
 
+
+class SaleReportInh(models.Model):
+    _inherit = "sale.report"
+
+    driver_id = fields.Many2one('res.partner', string="Driver", readonly=True)
+
+    def _query(self, with_clause='', fields={}, groupby='', from_clause=''):
+        fields['driver_id'] = ", l.driver_id as driver_id"
+        groupby += ', l.driver_id'
+        return super(SaleReportInh, self)._query(with_clause, fields, groupby, from_clause)
+
+
 class AccountMoveLineInh(models.Model):
     _inherit = 'account.move.line'
 
     driver_id = fields.Many2one('res.partner')
+
+
+class AccountInvoiceReportInh(models.Model):
+    _inherit = "account.invoice.report"
+
+    driver_id = fields.Many2one('res.partner')
+
+    def _select(self):
+        return super(AccountInvoiceReportInh, self)._select() + ", line.driver_id as driver_id"
+
+    def _group_by(self):
+        return super(AccountInvoiceReportInh, self)._group_by() + ", line.driver_id"
