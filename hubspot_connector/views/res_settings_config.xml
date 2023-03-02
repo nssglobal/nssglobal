@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="salesforce_setting">
+            <field name="name">res.config.settings.otto.market</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="base.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="Hubspot" string="Hubspot" data-key="hubspot_connector">
+                        <div id="credentials">
+                            <h2>Hubspot Credentials</h2>
+                            <div class="row mt16 o_settings_container">
+                                <div class="col-12 col-lg-6 o_setting_box">
+                                    <div class="o_setting_left_pane">
+                                    </div>
+                                    <div class="o_setting_right_pane">
+                                        <span class="o_form_label">Hubspot Access Token</span>
+                                        <span class="fa fa-lg fa-cube" title="Values set here are company-specific." aria-label="Values set here are company-specific." groups="base.group_multi_company" role="img"/>
+                                        <div class="text-muted">
+                                            Please enter the access token of the Hubspot and then click SAVE button.
+                                        </div>
+                                        <div class="content-group">
+                                            <div class="row mt16">
+                                                <label string="Access Token" for="hubspot_access_token" class="col-lg-5 o_light_label"/>
+                                                <field name="hubspot_access_token"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="manual-import">
+                            <h2>Import Utility</h2>
+                            <div class="row mt16 o_settings_container">
+                                <div class="col-12 col-lg-6 o_setting_box">
+                                    <div class="o_setting_left_pane">
+                                    </div>
+                                    <div class="o_setting_right_pane">
+                                        <span class="o_form_label">Import Contacts</span>
+                                        <span class="fa fa-lg fa-cube" title="Values set here are company-specific." aria-label="Values set here are company-specific." groups="base.group_multi_company" role="img"/>
+                                        <div class="text-muted">
+                                            Here you will import contacts from Hubspot after clicking the button.
+                                        </div>
+                                        <div class="content-group">
+                                            <div class="mt16">
+                                                <button name="hubspot_import_contacts" string="Import Contacts" type="object" class="col-lg-5 o_light_label oe_highlight"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
