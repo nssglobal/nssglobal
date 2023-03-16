@@ -119,7 +119,7 @@
         <field name="inherit_id" ref="planning.planning_view_tree"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='allocated_hours']" position="after">
-                <field name="driver_id" optional="hide" />
+                <field name="driver_id" optional="show" />
 
             </xpath>
         </field>
