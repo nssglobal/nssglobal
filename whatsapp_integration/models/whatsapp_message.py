@@ -168,15 +168,15 @@ class WhatsappComposeMessage(models.TransientModel):
                     },
                     {
                         "type": "header",
-                        "parameters": [
-                            {
-                                "type": "document",
-                                "document": {
-                                    "id": data['media'][0],
-                                    "filename": data['so_name'] + '.pdf'
-                                }
-                            }
-                        ]
+                        # "parameters": [
+                        #     {
+                        #         "type": "document",
+                        #         "document": {
+                        #             "id": data['media'][0],
+                        #             "filename": data['so_name'] + '.pdf'
+                        #         }
+                        #     }
+                        # ]
                     }
                 ]
             }
