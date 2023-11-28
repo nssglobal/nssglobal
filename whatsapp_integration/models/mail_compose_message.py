@@ -12,6 +12,11 @@ class MailComposeMessage(models.TransientModel):
 
     is_whatsapp = fields.Boolean()
 
+    def action_send_mail(self):
+        rec = super().action_send_mail()
+        self.action_send_message()
+        return rec
+
     def action_send_message(self):
         self.whatsapp_message_post()
         return {'type': 'ir.actions.act_window_close'}
