@@ -3,14 +3,15 @@
     'name': "Whatsapp Integration",
 
     'summary': """
-        Integration of Whatsapp for Sale, CRM, Invoice, Delivery and more, send message through whatsapp""",
+        Short (1 phrase/line) summary of the module's purpose, used as
+        subtitle on modules listing or apps.openerp.com""",
 
     'description': """
-        Integration of Whatsapp for Sale,Invoice, Delivery Order and contacts
+        Long description of module's purpose
     """,
 
-    'author': "HAKTechnologies",
-    'website': "http://www.haktechnologies.com",
+    'author': "My Company",
+    'website': "http://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml

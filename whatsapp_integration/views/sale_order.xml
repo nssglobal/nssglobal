@@ -8,7 +8,10 @@
             <field name="arch" type="xml">
                 <xpath expr="//form//header" position="inside">
                     <field name="is_whatsapp" invisible="1"/>
-                    <button name="action_so_send_whatsapp" string="Send by Whatsapp" type="object" invisible="1" attrs="{'invisible':[('is_whatsapp', '=', False)]}"/>
+                    <button name="action_so_send_whatsapp" string="Send by Whatsapp" type="object" attrs="{'invisible':[('is_whatsapp', '=', False)]}"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="attachment_ids" widget="many2many_binary" invisible="1"/>
                 </xpath>
             </field>
         </record>
